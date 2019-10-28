@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Play Rock/Paper/Scissors</title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <script>
+      function playRound(userSel,compSel){
+        let winMessage = `${userSel} beats ${compSel}, You Win!`;
+        let loseMessage = `${compSel} beats ${userSel}, You Loose. :(`;
+        let tieMessage = `${compSel} ties ${userSel}, It's a tie`;
+
+        if (userSel === "rock"){
+          if(compSel === "rock"){
+            return tieMessage;
+          }
+          else if (compSel === "scissors"){
+            return winMessage;
+          }
+          else{return loseMessage;}
+        }
+        else if(userSel === "scissors"){
+          if(compSel === "rock"){
+            return loseMessage;
+          }
+          else if (compSel === "scissors"){
+            return tieMessage;
+          }
+          else{return winMessage;}
+        }
+        else { //user select paper
+          if(compSel === "rock"){
+            return winMessage;
+          }
+          else if (compSel === "scissors"){
+            return loseMessage;
+          }
+          else{return tieMessage;}
+        }
+      }
+      function game() {
+        let games = 0;
+        let wins = 0;
+        while(games < 5){
+          let guess;
+          while(!validateGuess(guess)){
+            if(guess === null) return;
+            guess = prompt("Choose: rock, paper, or scissors");
+          }
+          guess = guess.toLowerCase();
+          let compSel = computerSelection();
+          let outcome = playRound(guess,compSel);
+          if (outcome.slice(-4) === "Win!") wins++;
+          console.log(outcome);
+          games++;
+        }
+        console.log(`You won ${wins} out of 5 games`);
+      }
+      function validateGuess(guess){
+        try{
+          guess = guess.toLowerCase();
+        }catch(TypeError){ return false;}
+        return guess === "rock" ||  guess === "scissors" || guess === "paper";
+      }
+      
+      function computerSelection() {
+        let choices = ["rock","paper","scissors"];
+        return choices[Math.floor(Math.random() * 3)];
+      }
+    </script>
+  </body>
+</html>
