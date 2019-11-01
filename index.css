@@ -1,0 +1,92 @@
+h1 {
+  font-size: 3.2rem;
+}
+
+.score {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border: 1px solid black;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 2;
+  
+}
+#score-left {
+  float: left;
+}
+#score-right {
+  float: right;
+}
+#score-left, #score-right {
+  margin: 0 6vw;
+  font-size: 2rem;
+}
+
+#score-container{
+  margin-top: 40px;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+#play {
+  width: 7rem;
+  height: 3rem;
+  background-color: white;
+  border: 1px solid black;
+  font-size: 1.2rem;
+  position: relative;
+  left: 45%;
+  top: 10vw;
+  transition: all .5s;
+}
+#play:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: rgba(0,0,0,.1);
+}
+.hide {
+  display: none;
+}
+
+h2 {
+  margin-left: 40vw
+}
+.thumbnail {
+  width: 11.8vw;
+  height: 11.8vw;
+  border: 2px solid black;
+}
+.thumbnail:hover{
+  cursor: pointer;
+}
+
+#select-container{
+  height: 70vh;
+  width: 70vw;
+  margin: auto;
+  text-align: center;
+  background-image: url(images/rock.jpg);
+  background-size: 100% 100%;
+}
+#select-container table{
+  margin: auto;
+  position: relative;
+  top: 42vh;
+  
+}
+#select-container table tr td{
+  display: inline-block;
+  margin-left: 3vw;
+  width: 12vw;
+  font-size: 1.6rem;
+}
+
+.thumb-above{
+  color: white;
+  background-color: rgba(0,0,0,.6);
+  padding-top: 5px;
+}
+
+h2 {
+  font-size: 2rem;
+}

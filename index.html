@@ -3,81 +3,42 @@
   <head>
     <title>Play Rock/Paper/Scissors</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="meyers-reset.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
   </head>
   <body>
-    <script>
-      function playRound(userSel,compSel){
-        if (userSel === "rock"){
-          if(compSel === "rock"){
-            return 0;
-          }
-          else if (compSel === "scissors"){
-            return 1;
-          }
-          else{return -1;}
-        }
-        else if(userSel === "scissors"){
-          if(compSel === "rock"){
-            return -1;
-          }
-          else if (compSel === "scissors"){
-            return 0;
-          }
-          else{return 1;}
-        }
-        else { //user select paper
-          if(compSel === "rock"){
-            return 1;
-          }
-          else if (compSel === "scissors"){
-            return -1;
-          }
-          else{return 0;}
-        }
-      }
-      function displayOutcome(result, userSel, compSel){
-        let winMessage = `${userSel} beats ${compSel}, You Win!`;
-        let loseMessage = `${compSel} beats ${userSel}, You Loose. :(`;
-        let tieMessage = `${compSel} ties ${userSel}, It's a tie`;
-        if(result === 1){
-          console.log(winMessage);
-        }
-        else if(result === 0){
-          console.log(tieMessage);
-        }
-        else {
-          console.log(loseMessage)
-        }
-      }
-      function game() {
-        let games = 0;
-        let wins = 0;
-        while(games < 5){
-          let userSel;
-          while(!validateuserSel(userSel)){
-            if(userSel === null) return;
-            userSel = prompt("Choose: rock, paper, or scissors");
-          }
-          userSel = userSel.toLowerCase();
-          let compSel = computerSelection();
-          let outcome = playRound(userSel,compSel);
-          if (outcome === 1) wins++;
-          displayOutcome(outcome, userSel, compSel);
-          games++;
-        }
-        console.log(`You won ${wins} out of 5 games`);
-      }
-      function validateuserSel(userSel){
-        try{
-          userSel = userSel.toLowerCase();
-        }catch(TypeError){ return false;}
-        return userSel === "rock" ||  userSel === "scissors" || userSel === "paper";
-      }
-      
-      function computerSelection() {
-        let choices = ["rock","paper","scissors"];
-        return choices[Math.floor(Math.random() * 3)];
-      }
-    </script>
+    <h1>Rock - Paper - Scissors</h1>
+    <div id="score-container">
+      <div id="score-left">
+        <span>Player 1</span>
+        <div class="score"></div>
+      </div>
+      <div id="score-right">
+          <div class="score"></div>
+          <span>Computer</span> 
+      </div>
+    </div>
+    <button id="play">Play</button>
+    <h2 class="hide">Choose Your Weapon!</h2>
+    <div id='select-container' class="hide">
+      <!-- Background image is the splash-->
+      <table>
+        <tr>
+          <td  class="thumb-above">Rock</td>
+          <td  class="thumb-above">Paper</td>
+          <td  class="thumb-above">Scissors</td>
+        </tr>
+        <tr>
+          <td><img data-choice="rock" class="thumbnail" alt='rock' src="images/rock.jpg"></td>
+          <td><img data-choice="paper" class="thumbnail" alt='paper' src="images/paper.jpg"></td>
+          <td><img data-choice="scissors" class="thumbnail" alt='scissors' src="images/scissors.jpg"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="pull-down">
+      <h3 id="message"></h3>
+      <button></button>
+    </div>
+    <script src=rps.js></script>
   </body>
 </html>
