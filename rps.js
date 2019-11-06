@@ -89,6 +89,8 @@ function initializeWeaponUI(){
 
 }
 initializeWeaponUI();
+
+
 /*         Event Handlers              */
 document.querySelector('#play').addEventListener('click',initGame);
 

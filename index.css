@@ -48,8 +48,27 @@ h1 {
   display: none;
 }
 
-h2 {
-  margin-left: 40vw
+h2, h1 {
+  text-align: center;
+}
+
+#select-container{
+  position: relative;
+  height: 70vh;
+  width: 70vw;
+  margin: auto;
+  text-align: center;
+  background-image: url(images/rock.jpg);
+  background-size: 100% 100%;
+}
+.grid{
+  position: absolute;
+  bottom: 0;
+  display: grid;
+  grid: 1fr 4fr / 1fr 1fr 1fr;
+  grid-column-gap: 2vw;
+  margin-left: calc((100% - ((11.8vw * 3) + (3 * 2vw)))/2);
+  
 }
 .thumbnail {
   width: 11.8vw;
@@ -59,33 +78,15 @@ h2 {
 .thumbnail:hover{
   cursor: pointer;
 }
-
-#select-container{
-  height: 70vh;
-  width: 70vw;
-  margin: auto;
-  text-align: center;
-  background-image: url(images/rock.jpg);
-  background-size: 100% 100%;
-}
-#select-container table{
-  margin: auto;
-  position: relative;
-  top: 42vh;
-  
-}
-#select-container table tr td{
-  display: inline-block;
-  margin-left: 3vw;
-  width: 12vw;
-  font-size: 1.6rem;
-}
-
 .thumb-above{
-  color: white;
+  display: inline-block;
+  font-size: 1.6rem;
   background-color: rgba(0,0,0,.6);
-  padding-top: 5px;
+  color: white;
+  align-self: center;
+  padding: 3px 0;
 }
+
 
 h2 {
   font-size: 2rem;

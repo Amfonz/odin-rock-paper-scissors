@@ -21,19 +21,14 @@
     <button id="play">Play</button>
     <h2 class="hide">Choose Your Weapon!</h2>
     <div id='select-container' class="hide">
-      <!-- Background image is the splash-->
-      <table>
-        <tr>
-          <td  class="thumb-above">Rock</td>
-          <td  class="thumb-above">Paper</td>
-          <td  class="thumb-above">Scissors</td>
-        </tr>
-        <tr>
-          <td><img data-choice="rock" class="thumbnail" alt='rock' src="images/rock.jpg"></td>
-          <td><img data-choice="paper" class="thumbnail" alt='paper' src="images/paper.jpg"></td>
-          <td><img data-choice="scissors" class="thumbnail" alt='scissors' src="images/scissors.jpg"></td>
-        </tr>
-      </table>
+      <div class="grid">  
+        <span  class="thumb-above r1c1">Rock</span>
+        <span  class="thumb-above r1c2">Paper</span>
+        <span  class="thumb-above r1c3">Scissors</span>
+        <img data-choice="rock" class="thumbnail r2c1" alt='rock' src="images/rock.jpg">
+        <img data-choice="paper" class="thumbnail r2c2" alt='paper' src="images/paper.jpg">
+        <img data-choice="scissors" class="thumbnail r2c3" alt='scissors' src="images/scissors.jpg">
+      </div>
     </div>
     <div class="pull-down">
       <h3 id="message"></h3>
