@@ -1,5 +1,6 @@
 h1 {
-  font-size: 3.2rem;
+  font-size: 3rem;
+  line-height: 1.5;
 }
 
 .score {
@@ -44,17 +45,16 @@ h1 {
   transform: scale(1.1);
   background-color: rgba(0,0,0,.1);
 }
-.hide {
-  display: none;
-}
+
 
 h2, h1 {
   text-align: center;
 }
 
 #select-container{
+  display: none;
   position: relative;
-  height: 70vh;
+  height: 65vh;
   width: 70vw;
   margin: auto;
   text-align: center;
@@ -91,3 +91,52 @@ h2, h1 {
 h2 {
   font-size: 2rem;
 }
+
+.full-screen{
+  display: none;
+  padding-top: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: height 1s;
+  background-color: rgba(0,0,0,.8);
+  color: white;
+}
+.full-message{
+  font-size: 3rem;
+  position: relative;
+  top: 100px;
+  display: block;
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+#game-end-container button{
+  left: calc((100vw - 20vw) / 2);
+  opacity: 1;
+}
+#game-end-container button, #round-end-container button{
+  width: 20vw;
+  height: 5vw;
+  position: relative;
+  background-color: white;
+  border: none;
+  font-size: 1.5rem;
+  top: 40vh;
+
+}
+
+#round-end-container button{
+  left: calc((100% - 40vw - 30px) / 2);
+  margin-left: 30px;
+}
+
+#game-end-container button:hover, #round-end-container button:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px white;
+}
+
+

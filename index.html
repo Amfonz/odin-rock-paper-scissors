@@ -11,16 +11,16 @@
     <div id="score-container">
       <div id="score-left">
         <span>Player 1</span>
-        <div class="score"></div>
+        <div id="p1-score" class="score"></div>
       </div>
       <div id="score-right">
-          <div class="score"></div>
+          <div id="comp-score" class="score"></div>
           <span>Computer</span> 
       </div>
     </div>
     <button id="play">Play</button>
     <h2 class="hide">Choose Your Weapon!</h2>
-    <div id='select-container' class="hide">
+    <div id='select-container'>
       <div class="grid">  
         <span  class="thumb-above r1c1">Rock</span>
         <span  class="thumb-above r1c2">Paper</span>
@@ -30,9 +30,14 @@
         <img data-choice="scissors" class="thumbnail r2c3" alt='scissors' src="images/scissors.jpg">
       </div>
     </div>
-    <div class="pull-down">
-      <h3 id="message"></h3>
-      <button></button>
+    <div id="round-end-container" class='full-screen'>
+      <span id="round-end-message" class="full-message"></span>
+      <button id="next-round">Next Round</button>      
+      <button id="round-quit" class="exit">Quit</button>
+    </div>
+    <div id="game-end-container" class='full-screen'>
+      <span id="game-end-message" class="full-message">JJJJJJJJJJJJJJJJJJJJ</span>
+      <button id="exit-button" class="exit">Exit</button>
     </div>
     <script src=rps.js></script>
   </body>
