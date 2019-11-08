@@ -1,16 +1,12 @@
-/*
-todo: workout post round dialogs
-figure out issue with scoring after reset
-*/
 
-
-var selectedWeapon = ''; 
+const GAMES = 5;
+var selectedWeapon = ""; 
 var playerWins = 0;
 var compWins = 0;
 
 
-var roundEnd = document.querySelector('#round-end-container');
-var gameEnd = document.querySelector('#game-end-container');
+var roundEnd = document.querySelector("#round-end-container");
+var gameEnd = document.querySelector("#game-end-container");
 function evalRound(userSel,compSel){
   //return 1 for player win, 0 for tie, -1 for loss 
   if (userSel === "rock"){
@@ -41,7 +37,21 @@ function evalRound(userSel,compSel){
     else{return 0;}
   }
 }
+function capitalizeFirst(str){
+  return str.slice(0,1).toUpperCase() + str.slice(1);
+}
+function displayGameEnd(message){
+  document.querySelector("#game-end-message").textContent = message;
+  gameEnd.style.height =  "100%";
+}
+function displayRoundEnd(message){
+  document.querySelector("#round-end-message").textContent = message;
+  roundEnd.style.height = "100%";
+}
 function showOutcome(result, userSel, compSel){
+  userSel = capitalizeFirst(userSel);
+  compSel = capitalizeFirst(compSel);
+
   let roundWinMessage = `${userSel} beats ${compSel}, You Win!`;
   let roundLoseMessage = `${compSel} beats ${userSel}, You Loose. :(`;
   let roundTieMessage = `${compSel} ties ${userSel}, It's a tie`;
@@ -49,38 +59,31 @@ function showOutcome(result, userSel, compSel){
   let gameLoseMessage = "You lost. How unfortunate."
   let gameWinMessage = "Victory! Congratulations."
   // score boxes
-  let playerScore = document.querySelector('#p1-score');
-  let compScore = document.querySelector('#comp-score');
+  let playerScore = document.querySelector("#p1-score");
+  let compScore = document.querySelector("#comp-score");
 
-  if(playerWins === 5){
+  if(playerWins === GAMES){
     //end of game display end of round and end of game message
     //display game-end-container
     playerScore.textContent = playerWins;
-    let message = document.querySelector('#game-end-message');
-    message.textContent =  gameWinMessage;
-    gameEnd.style.display = 'block';
+    displayGameEnd(gameWinMessage);
   }
-  else if(compWins === 5){
+  else if(compWins === GAMES){
     compScore.textContent = compWins;
-    let message = document.querySelector('#game-end-message');
-    message.textContent = gameLoseMessage;
-    gameEnd.style.display = 'block';
-
+    displayGameEnd(gameLoseMessage);
   }
   else{// no winner just a regular round or tie
-    let message = document.querySelector('#round-end-message');
     if(result === 1){//player win
-      message.textContent = roundWinMessage;
       playerScore.textContent = playerWins;
+      displayRoundEnd(roundWinMessage);
     }
     else if(result === 0){//tie
-      message.textContent = roundTieMessage;
+      displayRoundEnd(roundTieMessage);
     }
     else {
-      message.textContent = roundLoseMessage;
+      displayRoundEnd(roundLoseMessage);
       compScore.textContent = compWins;
     }
-    roundEnd.style.display = 'block';
   }
 
 }
@@ -89,15 +92,19 @@ function wipeGame(){
   //clear game and reset back to initial state
   playerWins = 0;
   compWins = 0;
-  document.querySelector("#p1-score").textContent='';
-  document.querySelector("#comp-score").textContent='';
+  document.querySelector("#p1-score").textContent="";
+  document.querySelector("#comp-score").textContent="";
   //hide weapon ui
-  document.querySelector("#select-container").style.display = 'none';
+  document.querySelector("h2").style.display = "none";
+  document.querySelector("#select-container").style.display = "none";
   //hide overlay screens
-  gameEnd.style.display = 'none';
-  roundEnd.style.display = 'none';
+  gameEnd.style.height = 0;
+  roundEnd.style.height = 0;
+  //reset rounds
+  document.querySelector("#round-num-container").firstChild.textContent = "";
+  document.querySelector("#round-num").textContent = "";
   //bring play back
-  document.querySelector("#play").style.display = 'block';
+  document.querySelector("#play").style.display = "block";
 }
 
 function computerSelection() {
@@ -120,33 +127,45 @@ function playRound() {
 
 /*         UI code                   */
 function initializeWeaponUI(){
-  let weaponBackGround = document.querySelector('#select-container');
-  let thumbnails = document.querySelectorAll('.thumbnail');
+  let weaponBackGround = document.querySelector("#select-container");
+  let thumbnails = document.querySelectorAll(".thumbnail");
   for(let i=0; i<3; i++){
     thumbnails[i].onclick = playRound;
-    thumbnails[i].addEventListener('mouseover',()=>{
+    thumbnails[i].onmouseover = ()=>{
       selectedWeapon = thumbnails[i].dataset.choice;
-      weaponBackGround.style.backgroundImage = `url('images/${selectedWeapon}.jpg')`;
-    });
+      weaponBackGround.style.backgroundImage = `url("images/${selectedWeapon}.jpg")`;
+    };
   }
 
 }
 
 
 /*         Event Handlers              */
-document.querySelector('#play').addEventListener('click',initGame);
-[...document.querySelectorAll('.exit')].forEach(element => {
-  element.addEventListener('click',wipeGame);
+document.querySelector("#play").addEventListener("click",initGame);
+[...document.querySelectorAll(".exit")].forEach(element => {
+  element.addEventListener("click",wipeGame);
 });
-document.querySelector('#next-round').addEventListener('click',()=>{
-  document.querySelector("#round-end-container").style.display = 'none';
+document.querySelector("#next-round").addEventListener("click",()=>{
+  roundEnd.style.height = 0;
+  if(GAMES - playerWins === 1 && GAMES - compWins === 1){
+    document.querySelector("#round-num-container").firstChild.textContent = "Final Round !";
+    document.querySelector("#round-num").textContent = "";
+  }else{
+    let round = document.querySelector("#round-num");
+    round.textContent = +round.textContent + 1;
+  }
 });
 
 function initGame(){
   //hide and show the appropriate ui options after user hits play
-  let play = document.querySelector('#play');
-  play.style.display = 'none';
-  document.querySelector('#select-container').style.display = 'block';
+  document.querySelector("#play").style.display = "none";
+  document.querySelector("h2").style.display = "block";
+  document.querySelector("#select-container").style.display = "block";
+  document.querySelector("#p1-score").textContent = "0";
+  document.querySelector("#comp-score").textContent = "0";
+  document.querySelector("#round-num-container").firstChild.textContent = "Round: ";
+  document.querySelector("#round-num").textContent = "1";
+
   initializeWeaponUI();
 
 }

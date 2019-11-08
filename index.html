@@ -13,29 +13,33 @@
         <span>Player 1</span>
         <div id="p1-score" class="score"></div>
       </div>
+      <div id="round-num-container">
+        <span></span>
+        <span id="round-num"></span>
+      </div>
       <div id="score-right">
           <div id="comp-score" class="score"></div>
           <span>Computer</span> 
       </div>
     </div>
     <button id="play">Play</button>
-    <h2 class="hide">Choose Your Weapon!</h2>
-    <div id='select-container'>
+    <h2>Choose Your Weapon!</h2>
+    <div id="select-container">
       <div class="grid">  
         <span  class="thumb-above r1c1">Rock</span>
         <span  class="thumb-above r1c2">Paper</span>
         <span  class="thumb-above r1c3">Scissors</span>
-        <img data-choice="rock" class="thumbnail r2c1" alt='rock' src="images/rock.jpg">
-        <img data-choice="paper" class="thumbnail r2c2" alt='paper' src="images/paper.jpg">
-        <img data-choice="scissors" class="thumbnail r2c3" alt='scissors' src="images/scissors.jpg">
+        <img data-choice="rock" class="thumbnail r2c1" alt="rock" src="images/rock.jpg">
+        <img data-choice="paper" class="thumbnail r2c2" alt="paper" src="images/paper.jpg">
+        <img data-choice="scissors" class="thumbnail r2c3" alt="scissors" src="images/scissors.jpg">
       </div>
     </div>
-    <div id="round-end-container" class='full-screen'>
+    <div id="round-end-container" class="full-screen">
       <span id="round-end-message" class="full-message"></span>
       <button id="next-round">Next Round</button>      
       <button id="round-quit" class="exit">Quit</button>
     </div>
-    <div id="game-end-container" class='full-screen'>
+    <div id="game-end-container" class="full-screen">
       <span id="game-end-message" class="full-message">JJJJJJJJJJJJJJJJJJJJ</span>
       <button id="exit-button" class="exit">Exit</button>
     </div>
